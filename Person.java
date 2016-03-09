@@ -10,6 +10,7 @@ public class Person
    {
       this.name = name;
       this.college = college;
+      responses = new ArrayList<Attribute>();
    }
 
    public ArrayList<Attribute> getRespones()
@@ -25,5 +26,9 @@ public class Person
    public String getCollege()
    {
       return college;
+   }
+
+   public void saveResponse(Attribute a) {
+      responses.add(a);
    }
 }
