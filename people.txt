@@ -1,0 +1,9 @@
+Addison Martin, College of Engineering, Bedtime, 10, 1, Alchohol, 10, 1, Drugs, 10, 1, Cleanliness, 10, 1, Studiness, 10, 1, Guests, 10, 1, Other crap, 10, 1, More shit, 10, 1, Othersss, 10, 1
+John Smith, College of Engineering, Bedtime, 8, 3, Alchohol, 1, 5, Drugs, 1, 5, Cleanliness, 7, 2, Studiness, 10, 1, Guests, 10, 1, Other crap, 10, 1, More shit, 3, 2, Othersss, 5, 5
+Sally Sue, College of Art Stuff, Bedtime, 10, 13, Alchohol, 6, 3, Drugs, 3, 2, Cleanliness, 10, 1, Studiness, 9, 4, Guests, 10, 5, Other crap, 1, 2, More shit, 4, 5, Othersss, 10, 2
+Natalie Keelan, CAFES, Bedtime, 5, 2, Alchohol, 10, 3, Drugs, 10, 1, Cleanliness, 7, 3, Studiness, 10, 1, Guests, 7, 5, Other crap, 10, 1, More shit, 1, 5, Othersss, 4, 3
+I hate tech writing, College of Architecture, Bedtime, 10, 1, Alchohol, 10, 1, Drugs, 10, 1, Cleanliness, 10, 1, Studiness, 10, 1, Guests, 10, 1, Other crap, 10, 1, More shit, 10, 1, Othersss, 10, 1
+Bob Bobby, COSAM, Bedtime, 1, 5, Alchohol, 1, 5, Drugs, 1, 5, Cleanliness, 10, 1, Studiness, 10, 1, Guests, 1, 5, Other crap, 10, 1, More shit, 1, 5, Othersss, 1, 5
+Daniel Nash, College of Engineering, Bedtime, 8, 4, Alchohol, 2, 3, Drugs, 5, 5, Cleanliness, 3, 4, Studiness, 6, 1, Guests, 10, 1, Other crap, 2, 2, More shit, 10, 1, Othersss, 3, 3
+Sam See, College of Art Stuff, Bedtime, 1, 2, Alchohol, 5, 5, Drugs, 5, 5, Cleanliness, 2, 5, Studiness, 4, 1, Guests, 9, 2, Other crap, 7, 1, More shit, 1, 1, Othersss, 3, 3
+Zack Chris, CAFES, Bedtime, 10, 5, Alchohol, 10, 5, Drugs, 10, 5, Cleanliness, 3, 2, Studiness, 7, 3, Guests, 8, 1, Other crap, 10, 1, More shit, 10, 1, Othersss, 10, 1

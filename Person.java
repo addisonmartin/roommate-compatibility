@@ -6,29 +6,29 @@ public class Person
    private String college;
    private ArrayList<Attribute> responses;
 
-   public Person(String name, String college)
-   {
+   public Person(String name, String college) {
       this.name = name;
       this.college = college;
       responses = new ArrayList<Attribute>();
    }
 
-   public ArrayList<Attribute> getRespones()
-   {
+   public ArrayList<Attribute> getResponses() {
       return responses;
    }
 
-   public String getName()
-   {
+   public String getName() {
       return name;
    }
 
-   public String getCollege()
-   {
+   public String getCollege() {
       return college;
    }
 
    public void saveResponse(Attribute a) {
       responses.add(a);
+   }
+
+   public String toString() {
+      return name;
    }
 }

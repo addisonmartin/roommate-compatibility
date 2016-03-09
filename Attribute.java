@@ -10,18 +10,20 @@ public class Attribute
       this.importance = importance;
    }
 
-   public String getAttributeName()
-   {
+   public String getAttributeName() {
       return name;
    }
 
-   public int getImportance()
-   {
+   public int getImportance() {
       return importance;
    }
 
-   public int getValue()
-   {
+   public int getValue() {
       return value;
+   }
+
+   public String toString()
+   {
+      return name + ", value: " + value + ", importance: " + importance;
    }
 }
