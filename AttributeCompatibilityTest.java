@@ -1,4 +1,4 @@
-public class AttributeCompatibiltyTest implements CompatibilityTest
+public class AttributeCompatibilityTest implements CompatibilityTest
 {
    public double calculate(Person person1, Person person2)
    {
