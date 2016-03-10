@@ -13,7 +13,7 @@ public class Person
       responses = new ArrayList<Attribute>();
    }
 
-   public ArrayList<Attribute> getRespones()
+   public ArrayList<Attribute> getResponses()
    {
       return responses;
    }
