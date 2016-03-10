@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Database {
    private static final String filePath = "people.txt";
@@ -49,30 +51,53 @@ public class Database {
       } catch (Exception e) {
          System.out.println("Error while inputing people from file: ");
          e.printStackTrace();
-      }
+      }//Do I need to close file?
       //Maybe keep tihs stored somewhere? Even if just in the driver...
       return people;
    }
 
    public static void addToDatabase(Person person) {
+      BufferedWriter bw = null;
 
+      try {
+         bw = new BufferedWriter(new FileWriter(filePath, true));
+         String personData = personDataToString(person);
+         bw.write(personData);
+         bw.newLine();
+         bw.flush();
+      } catch (IOException e) {
+         System.out.println("Error while adding Person to database: ");
+         e.printStackTrace();
+      } finally {
+         if (bw != null) {
+            try {
+               bw.close();
+            } catch (IOException e) {
+               System.out.println("Error while trying to close file writer: ");
+               e.printStackTrace();
+            }
+         }
+      }
    }
 
-   public static void main(String[] args) {
-      ArrayList<Person> myPeople = Database.getPeople();
+   private static String personDataToString(Person person) {
+      String personData = "";
+      personData += person.getName() + ", ";
+      personData += person.getCollege() + ", ";
 
-      for (int i = 0; i < myPeople.size(); i++)
-      {
-         System.out.println(myPeople.get(i) + " ");
-         System.out.print(myPeople.get(i).getCollege()+ " ");
-         ArrayList<Attribute> atrs = myPeople.get(i).getResponses();
+      ArrayList<Attribute> responses = person.getResponses();
 
-         for (int j = 0; j < atrs.size(); j++)
-         {
-            System.out.print(atrs.get(j) + " ");
+      for (int i = 0; i < responses.size(); i++) {
+         if (i == responses.size() - 1) {
+            String attributeToAdd = responses.get(i).getAttributeName() + ", " + responses.get(i).getValue() + ", " + responses.get(i).getImportance(); //Make sure no lines are over 100!
+            personData += attributeToAdd;
          }
-
-         System.out.println();
+         else {
+            String attributeToAdd = responses.get(i).getAttributeName() + ", " + responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", "; //Make sure no lines are over 100!
+            personData += attributeToAdd;
+         }
       }
+
+      return personData;
    }
 }
