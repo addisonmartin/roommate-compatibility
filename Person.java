@@ -12,7 +12,12 @@ public class Person
       responses = new ArrayList<Attribute>();
    }
 
+<<<<<<< HEAD
    public ArrayList<Attribute> getResponses() {
+=======
+   public ArrayList<Attribute> getResponses()
+   {
+>>>>>>> cd1bb4dee93bd026030fd4962e38fc4a50c3779d
       return responses;
    }
 
