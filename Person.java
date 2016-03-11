@@ -1,3 +1,9 @@
+/** Provides the implementation to store a person's name, college, and responses to the questions. To be used for testing different people.
+*
+* @author Natalie Keelan and Addison Martin
+* @version Program 7
+*/
+
 import java.util.ArrayList;
 
 public class Person
@@ -12,12 +18,7 @@ public class Person
       responses = new ArrayList<Attribute>();
    }
 
-<<<<<<< HEAD
    public ArrayList<Attribute> getResponses() {
-=======
-   public ArrayList<Attribute> getResponses()
-   {
->>>>>>> cd1bb4dee93bd026030fd4962e38fc4a50c3779d
       return responses;
    }
 
