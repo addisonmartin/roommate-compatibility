@@ -7,9 +7,19 @@
 
 public class NameCompatibilityTest implements CompatibilityTest
 {
-   public double calculate(Person person1, Person person2) {
+   private Person person1;
+   private Person person2;
+
+   public NameCompatibilityTest(Person person1, Person person2) {
+      this.person1 = person1;
+      this.person2 = person2;
+   }
+
+   public double calculate() {
       String name1 = person1.getName();
-      String name2 = person1.getName(); //Do we need to make deep copies? Probably should to fend off Eriq.
+      //changed this line to say person2.getName() not sure if thats what you wanted but I thought it
+      //might have been a tiny mistake. it said name2 = person1.getName() before.
+      String name2 = person2.getName(); //Do we need to make deep copies? Probably should to fend off Eriq.
 
       if (name1.compareTo(name2) > 0) {
          String temp = name1;

@@ -16,7 +16,7 @@ public class AttributeCompatibilityTest implements CompatibilityTest
       this.person2 = person2;
    }
 
-   public double calculate(Person person1, Person person2) {
+   public double calculate() {
       int score1 = calcScoreP1ToP2(person1, person2);
       int score2 = calcScoreP1ToP2(person2, person1);
       double nonCompat = calcNonCompatibility(score1, score2, person1, person2);
