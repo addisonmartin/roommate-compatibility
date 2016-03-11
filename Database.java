@@ -89,11 +89,13 @@ public class Database {
 
       for (int i = 0; i < responses.size(); i++) {
          if (i == responses.size() - 1) {
-            String attributeToAdd = responses.get(i).getAttributeName() + ", " + responses.get(i).getValue() + ", " + responses.get(i).getImportance(); //Make sure no lines are over 100!
+            String attributeToAdd = responses.get(i).getAttributeName() + ", "
+                  + responses.get(i).getValue() + ", " + responses.get(i).getImportance();
             personData += attributeToAdd;
          }
          else {
-            String attributeToAdd = responses.get(i).getAttributeName() + ", " + responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", "; //Make sure no lines are over 100!
+            String attributeToAdd = responses.get(i).getAttributeName() + ", " +
+                  responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", ";
             personData += attributeToAdd;
          }
       }

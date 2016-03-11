@@ -18,13 +18,15 @@ public class AttributeCompatibilityTest implements CompatibilityTest
 
    public double calculate(Person person1, Person person2) {
       int score1 = calcScoreP1ToP2(person1, person2);
-      int score2 = calcScoreP2ToP1(person1, person2);
+      int score2 = calcScoreP1ToP2(person2, person1);
       double nonCompat = calcNonCompatibility(score1, score2, person1, person2);
       return calcCompatibility(nonCompat);
    }
 
    private static double calcCompatibility(double nonCompDecimal) {
-      return 100*(1.0 - nonCompDecimal);
+      double perc = 100*(1.0 - nonCompDecimal);
+      double roundOff = (double) Math.round(perc*100)/100;
+      return roundOff;
    }
 
    private static int calcScoreP1ToP2(Person p1, Person p2) {
@@ -36,19 +38,6 @@ public class AttributeCompatibilityTest implements CompatibilityTest
          diff = p1List.get(i).getValue() - p2List.get(i).getValue();
          diff = Math.abs(diff);
          sum += diff*p1List.get(i).getImportance();
-      }
-      return sum;
-   }
-
-   private static int calcScoreP2ToP1(Person p1, Person p2) {
-      ArrayList<Attribute> p1List = p1.getResponses();
-      ArrayList<Attribute> p2List = p2.getResponses();
-      int sum = 0;
-      int diff = 0;
-      for(int i =0; i<p1List.size(); i++) {
-         diff = p1List.get(i).getValue() - p2List.get(i).getValue();
-         diff = Math.abs(diff);
-         sum += diff*p2List.get(i).getImportance();
       }
       return sum;
    }
