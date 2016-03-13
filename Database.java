@@ -14,7 +14,7 @@ import java.io.FileWriter;
 
 public class Database {
    private static final String filePath = "people.txt";
-   private static final int personStringLength = 29;
+   private static final int personStringLength = 30;
 
    public static ArrayList<Person> getPeople() {
       ArrayList<Person> people = new ArrayList<Person>();
@@ -36,9 +36,9 @@ public class Database {
          while (scanner.hasNextLine()) {
             personString = scanner.nextLine();
             personData = personString.split(", ");
-            person = new Person(personData[0], personData[1]);
+            person = new Person(personData[0], personData[1], Integer.parseInt(personData[2]));//Check for valid input!
 
-            for (int i = 2; i < personData.length - 3; i += 3) {
+            for (int i = 3; i < personData.length - 3; i += 3) {
                String attributeName = personData[i];
                int attributeValue = Integer.parseInt(personData[i + 1]);
                int attributeImportance = Integer.parseInt(personData[i + 2]);
@@ -84,6 +84,7 @@ public class Database {
       String personData = "";
       personData += person.getName() + ", ";
       personData += person.getCollege() + ", ";
+      personData += person.getGender() + ", ";
 
       ArrayList<Attribute> responses = person.getResponses();
 

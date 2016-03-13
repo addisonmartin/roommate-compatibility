@@ -11,11 +11,17 @@ public class Person
    private String name;
    private String college;
    private ArrayList<Attribute> responses;
+   private int gender; //0 is female, 1 is male
 
-   public Person(String name, String college) {
+   public Person(String name, String college, int gender) {
       this.name = name;
       this.college = college;
+      this.gender = gender;
       responses = new ArrayList<Attribute>();
+   }
+
+   public Person(String name, String college) {
+      this(name, college, 0);
    }
 
    public ArrayList<Attribute> getResponses() {
@@ -28,6 +34,10 @@ public class Person
 
    public String getCollege() {
       return college;
+   }
+
+   public int getGender() {
+      return gender;
    }
 
    public void saveResponse(Attribute a) {

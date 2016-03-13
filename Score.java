@@ -1,5 +1,6 @@
 import java.util.*;
-public class Score {
+
+public class Score implements Comparable<Score>{
    private Person p1;
    private Person p2;
    private ArrayList<Integer> all;
@@ -57,4 +58,15 @@ public class Score {
       return toSort;
    }
 
+   public int compareTo(Score other) {
+      return (int)(this.getScore() - other.getScore());
+   }
+
+   public Person getPerson1() {
+      return p1;
+   }
+
+   public Person getPerson2() {
+      return p2;
+   }
 }
