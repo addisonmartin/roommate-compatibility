@@ -52,7 +52,21 @@ public class Database {
          System.out.println("Error while inputing people from file: ");
          e.printStackTrace();
       }//Do I need to close file?
-      //Maybe keep tihs stored somewhere? Even if just in the driver...
+      //Maybe keep tihs stored somewhere? Even if just in the driver.
+
+      people = Database.checkForDuplicates(people);
+      return people;
+   }
+
+   public static ArrayList<Person> checkForDuplicates(ArrayList<Person> people) {
+      for (int i = 0; i < people.size(); i++) {
+         for (int j = 0; j < people.size(); j++) {
+            if (people.get(i).equals(people.get(j))) {
+               people.remove(j);
+            }
+         }
+      }
+
       return people;
    }
 

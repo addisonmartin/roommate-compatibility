@@ -111,15 +111,40 @@ public class MainMenu {
       Scanner scanner = new Scanner(System.in);
       System.out.print("\tEnter your name: ");
       String name = scanner.nextLine();
-      System.out.print("\n\tEnter your college: ");
+      System.out.print("\tEnter your college: ");
       String college = scanner.nextLine(); //Make this a number thing!!!
-      System.out.print("\n\tEnter your gender: "); //This should also be a number thing
-      String gender = scanner.nextLine();
-      System.out.println("\n\tOn a scale of 1 - 10, how early do you go to bed?");
+      System.out.print("\tEnter your gender: "); //This should also be a number thing
+      int gender = scanner.nextInt();
+      Person person = new Person(name, college, gender);
+
+      System.out.println("\tOn a scale of 1 - 10, how early do you go to bed?");
       System.out.print("\t1 being very early, 10 being very late: ");
       int bedTime = scanner.nextInt();
+      System.out.println("\tAnd on a scale of 1 - 5, how important is this to you?");
+      System.out.println("\t1 being not important at all, 5 being very important: ");
+      int bedTimeImportance = scanner.nextInt();
+      person.saveResponse(new Attribute("Bed Time", bedTime, bedTimeImportance));
 
-      return null;
+      Database.addToDatabase(person);
+      return person;
+   }
+
+   public int[] askAboutAttribute(String name) {
+      String lowerCaseName = name.toLowerCase();
+      int[] responses = new int[2];
+
+      System.out.println("\tOn a scale of 1 - 10,");
+      System.out.println("\tWith 1 being the earliest/least, and 10 being the latest/most");
+      System.out.print("\tWhen/how okay are you with " + lowerCaseName + ": ");
+      Scanner scanner = new Scanner(System.in);
+      responses[0] = scanner.nextInt();
+
+      System.out.println("\tOn a scale of 1 - 5");
+      System.out.println("\tWith 1 being the least and 10 being the most");
+      System.out.print("\tHow important is this to you: ");
+      responses[1] = scanner.nextInt();
+
+      return responses;
    }
 
    public Person getPersonFromDatabase(String name) {
@@ -164,7 +189,7 @@ public class MainMenu {
       System.out.println("** ***** ***** ***** ***** ***** ***** ***** ***** **\n\n");
    }
 
-   public  void displayOptions() {
+   public void displayOptions() {
       System.out.println("\tWhat would you like to do...?");
       System.out.println("\tPlease enter \'1\' if you would like to get");
       System.out.println("\ttwo people's Roommate Compatibility Score (RCS)");
