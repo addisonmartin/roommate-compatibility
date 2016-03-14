@@ -27,7 +27,7 @@ public class Score implements Comparable<Score>{
       for(int i =0; i<p1List.size(); i++) {
          diff = p1List.get(i).getValue() - p2List.get(i).getValue();
          diff = Math.abs(diff);
-         all.add(diff*p1List.get(i).getImportance());
+         //all.add(diff*p1List.get(i).getImportance());
       }
    }
 

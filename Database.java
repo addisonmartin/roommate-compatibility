@@ -14,7 +14,7 @@ import java.io.FileWriter;
 
 public class Database {
    private static final String filePath = "people.txt";
-   private static final int personStringLength = 30;
+   private static final int PERSON_STRING_LENGTH = 30;
    private static ArrayList<String> responseNames;
 
    public static ArrayList<Person> getPeople() {
@@ -39,7 +39,7 @@ public class Database {
             personData = personString.split(", ");
             person = new Person(personData[0], personData[1], personData[2]);//Check for valid input!
 
-            for (int i = 3; i < personData.length - 3; i += 3) {
+            for (int i = 3; i < PERSON_STRING_LENGTH; i += 3) {
                String attributeName = personData[i];
                int attributeValue = Integer.parseInt(personData[i + 1]);
                int attributeImportance = Integer.parseInt(personData[i + 2]);
@@ -55,7 +55,7 @@ public class Database {
       }//Do I need to close file?
       //Maybe keep tihs stored somewhere? Even if just in the driver.
 
-      people = Database.checkForDuplicates(people);
+      //people = Database.checkForDuplicates(people);
       return people;
    }
 
@@ -114,7 +114,7 @@ public class Database {
                   responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", ";
             personData += attributeToAdd;
          }
-      }
+      }//IS this cooreect??
 
       return personData;
    }
@@ -134,5 +134,20 @@ public class Database {
       }
 
       return responseNames;
+   }
+
+   public static void main(String[] args) {
+      ArrayList<Person> people = getPeople();
+
+      for (Person prsn : people) {
+         System.out.println(prsn.getName());
+         System.out.println(prsn.getGender());
+         System.out.println(prsn.getCollege());
+         ArrayList<Attribute> responses = prsn.getResponses();
+
+         for (Attribute response : responses) {
+            System.out.println(response.getAttributeName() + ", " + response.getValue() + ", " + response.getImportance());
+         }
+      }
    }
 }
