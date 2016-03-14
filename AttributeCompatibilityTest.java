@@ -11,11 +11,23 @@ public class AttributeCompatibilityTest implements CompatibilityTest
    private Person person2;
    private static final int MAX_POSSIBLE_SCORE = 485;
 
+   /**
+   *Constructs an AttributeCompatibilityTest for 2 people.
+   *
+   *@param person1 1st person in the test
+   *@param person2 2nd person in the test
+   */
    public AttributeCompatibilityTest(Person person1, Person person2) {
       this.person1 = person1;
       this.person2 = person2;
    }
 
+   /**
+   *Calculates and returns the percent compatibility for 2 people
+   * based on Attributes and college.
+   *
+   *@return The percent compatibility for 2 people based on their Attributes and college.
+   */
    public double calculate() {
       int score1 = calcScoreP1ToP2(person1, person2);
       int score2 = calcScoreP1ToP2(person2, person1);

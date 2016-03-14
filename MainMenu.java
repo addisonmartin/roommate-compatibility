@@ -95,7 +95,7 @@ public class MainMenu {
       scanner.nextLine();
       System.out.print("\n\tPlease enter their name now: ");
       String name = scanner.nextLine();
-      Person person;
+      Person person = null;
 
       List<Person> people = Database.getPeople();
 
@@ -132,6 +132,21 @@ public class MainMenu {
       }
 
       int college = Integer.parseInt(stringCollege);
+
+      if (college == 1) {
+         stringCollege = "COSAM";
+      } else if (college == 2) {
+         stringCollege = "CENG";
+      } else if (college == 3) {
+         stringCollege = "CAED";
+      } else if (college == 4) {
+         stringCollege = "CAFES";
+      } else if (college == 5) {
+         stringCollege = "Orfalea College of Business";
+      } else if (college == 6) {
+         stringCollege = "CLA";
+      }
+
       System.out.print("\tEnter your gender: ");
       System.out.print("\n\tPlease enter 0 for female, 1 for male.");
       String stringGender = scanner.nextLine();
@@ -143,7 +158,14 @@ public class MainMenu {
 
       int gender = Integer.parseInt(stringGender);
 
-      Person person = new Person(name, college, gender);
+      if (gender == 0) {
+         stringGender = "Female";
+      }
+      else {
+         stringGender = "Male";
+      }
+
+      Person person = new Person(name, stringCollege, stringGender);
 
       ArrayList<String> responseNames = Database.getResponseNames();
 
@@ -176,7 +198,7 @@ public class MainMenu {
 
    public void comparePersonToDatabase() {
       System.out.println("\tFirst, please enter your infomation.\n");
-      Person person1 = getPersonFromUser();
+      Person person1 = getPersonFromUser();//Check to see if they want to pull their info from the database
       List<Person> people = Database.getPeople();
       List<Score> scores = new ArrayList<Score>();
 

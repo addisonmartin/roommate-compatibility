@@ -10,11 +10,23 @@ public class NameCompatibilityTest implements CompatibilityTest
    private Person person1;
    private Person person2;
 
+   /**
+   *Constructs a NameCompatibilityTest for the two given people from the Person class.
+   *
+   *@param person1 1st Person in the test
+   *@param person2 2nd Person in the test
+   */
    public NameCompatibilityTest(Person person1, Person person2) {
       this.person1 = person1;
       this.person2 = person2;
    }
 
+   /**
+   *Calculates and returns the percent compatibility for the 2
+   * people based on the letters in their names.
+   *
+   *@return The percent compatibility for the 2 people based on the letters in their names
+   */
    public double calculate() {
       String name1 = person1.getName();
       //changed this line to say person2.getName() not sure if thats what you wanted but I thought it

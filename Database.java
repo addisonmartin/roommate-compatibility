@@ -37,7 +37,7 @@ public class Database {
          while (scanner.hasNextLine()) {
             personString = scanner.nextLine();
             personData = personString.split(", ");
-            person = new Person(personData[0], personData[1], Integer.parseInt(personData[2]));//Check for valid input!
+            person = new Person(personData[0], personData[1], personData[2]);//Check for valid input!
 
             for (int i = 3; i < personData.length - 3; i += 3) {
                String attributeName = personData[i];
