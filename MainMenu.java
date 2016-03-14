@@ -90,7 +90,7 @@ public class MainMenu {
       }
       else if (input == 2) {
          scanner.nextLine();
-         System.out.print("\n\tPlease enter their name now: ");
+         System.out.print("\n\tPlease enter their first and last name now: ");
          String name = scanner.nextLine();
          person2 = getPersonFromDatabase(name);
 
@@ -111,16 +111,24 @@ public class MainMenu {
       Scanner scanner = new Scanner(System.in);
       System.out.print("\tEnter your name: ");
       String name = scanner.nextLine();
-      System.out.print("\tEnter your college: ");
+      //I just added all the college names and stuff! i added the numbers because it seems like you want to make it into numbers
+      //which sounds like a great idea!
+      System.out.print("\tEnter your college exactly as one of these 6 numerical options - "
+            +"1 - College of Agriculture Food and Enviornmental Sciences, "
+            +"2 - College of Architecture and Enviornmental Design, 3 - College of Engineering,"
+            +" 4 - College of Liberal Arts, 5 - Orfalea College of Business, "
+            +"6 - College of Science and Mathematics: ");
       String college = scanner.nextLine(); //Make this a number thing!!!
       System.out.print("\tEnter your gender: "); //This should also be a number thing
       int gender = scanner.nextInt();
       Person person = new Person(name, college, gender);
 
+      //here i updated the question to be more standardized
       System.out.println("\tOn a scale of 1 - 10, how early do you go to bed?");
-      System.out.print("\t1 being very early, 10 being very late: ");
+      System.out.print("\t1 being before 10:00 pm, 5 being 12:00 am, 10 being after 2:00 am ");
       int bedTime = scanner.nextInt();
-      System.out.println("\tAnd on a scale of 1 - 5, how important is this to you?");
+      System.out.println("\tAnd on a scale of 1 - 5, how important is it that your roommate"
+            + " goes to bed around the same time?");
       System.out.println("\t1 being not important at all, 5 being very important: ");
       int bedTimeImportance = scanner.nextInt();
       person.saveResponse(new Attribute("Bed Time", bedTime, bedTimeImportance));
