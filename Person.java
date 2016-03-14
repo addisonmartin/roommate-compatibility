@@ -41,17 +41,6 @@ public class Person
          Person.responseNames.add("Time in room");
       }
    }
-//NATALIE REMEMBER TO READ. I'm not sure what this constructor is for?
-//is this for people that dont identify with a gender?
-   /**
-   *Constructs a person with the specified name and college with a default gender of female.
-   *
-   *@param name The name of the Person
-   *@param college The college of the Person
-   */
-   public Person(String name, String college) {
-      this(name, college, 0);
-   }
 
    /**
    *Gets the Person's responses to the questionnaire as an ArrayList of Attributes.
@@ -98,33 +87,25 @@ public class Person
    public void saveResponse(Attribute a) {
       responses.add(a);
    }
-//NATALIE READ: is this what this method is supposed to do? because there is a getter method for name
-   /**
-   *Turns the persons qualities into a String and returns it.
-   *
-   *@return a String of the persons qualities such as name.
-   */
-   public String toString() {
-      return name;
-   }
 
-//NATALIE READ: Are we sure we want to overload instead of override? Also, are we sure we want to check that their responses are equal?
-//I think that we can assume its the same person if they are in the same college, have the same name, and have the same gender.
    /**
-   *Checks if a Person equals another Person based on all their qualities.
+   *Checks if a Person equals another Object based on all their qualities.
    *
-   *@param other The Person to see if this Person is equal to.
-   *@return True if the 2 Person objects are equal, false if not.
+   *@param other The Object to see if this Person is equal to.
+   *@return True if the Object has the same name, gender, and college , false if not.
    */
-   public boolean equals(Person other) {
+   public boolean equals(Object other) {
       if (other == null) {
          return false;
       }
+      if(!other.getClass().equals(this.getClass())) {
+         return false;
+      }
 
-      boolean equals = this.name.equals(other.name);
-      equals &= this.college.equals(other.college);
-      equals &= this.responses.equals(other.responses);
-      equals &= this.gender == other.gender;
+      Person per = (Person)other;
+      boolean equals = this.name.equals(per.name);
+      equals &= this.college.equals(per.college);
+      equals &= this.gender == per.gender;
 
       return equals;
    }
