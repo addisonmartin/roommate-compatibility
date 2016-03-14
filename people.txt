@@ -1,5 +1,5 @@
 Addison Martin, College of Engineering, 1, Bed Time, 7, 3, Alcohol, 8, 4, Weed and Other Drugs, 8, 4, Cleanliness, 8, 2, Studiousness 10, 2, Sharing, 9, 2, Overnight Guests, 1, 1, Friends Over, 10, 5, Time in Room, 6, 2
-Addison Martin, College of Engineering, 1, Bed Time, 7, 3, Alcohol, 8, 4, Weed and Other Drugs, 8, 4, Cleanliness, 8, 2, Studiousness 10, 2, Sharing, 9, 2, Overnight Guests, 1, 1, Friends Over, 10, 5, Time in Room, 6, 2
+Zack Ragozzino, College of Engineering, 1, Bed Time, 10, 1, Alcohol, 6, 4, Weed and Other Drugs, 7, 4, Cleanliness, 7, 4, Studiousness 4, 5, Sharing, 9, 2, Overnight Guests, 3, 4, Friends Over, 7, 7, Time in Room, 8, 5
 Addison Martin, College of Engineering, 1, Bed Time, 7, 3, Alcohol, 8, 4, Weed and Other Drugs, 8, 4, Cleanliness, 8, 2, Studiousness 10, 2, Sharing, 9, 2, Overnight Guests, 1, 1, Friends Over, 10, 5, Time in Room, 6, 2
 Addison Martin, College of Engineering, 1, Bed Time, 7, 3, Alcohol, 8, 4, Weed and Other Drugs, 8, 4, Cleanliness, 8, 2, Studiousness 10, 2, Sharing, 9, 2, Overnight Guests, 1, 1, Friends Over, 10, 5, Time in Room, 6, 2
 Addison Martin, College of Engineering, 1, Bed Time, 7, 3, Alcohol, 8, 4, Weed and Other Drugs, 8, 4, Cleanliness, 8, 2, Studiousness 10, 2, Sharing, 9, 2, Overnight Guests, 1, 1, Friends Over, 10, 5, Time in Room, 6, 2
