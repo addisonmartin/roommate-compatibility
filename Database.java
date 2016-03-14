@@ -15,6 +15,7 @@ import java.io.FileWriter;
 public class Database {
    private static final String filePath = "people.txt";
    private static final int personStringLength = 30;
+   private static ArrayList<String> responseNames;
 
    public static ArrayList<Person> getPeople() {
       ArrayList<Person> people = new ArrayList<Person>();
@@ -116,5 +117,22 @@ public class Database {
       }
 
       return personData;
+   }
+
+   public static ArrayList<String> getResponseNames() {
+      if (Database.responseNames.size() == 0) {
+         Database.responseNames = new ArrayList<String>();
+         Database.responseNames.add("Bed Time");
+         Database.responseNames.add("Cleanliness");
+         Database.responseNames.add("Okay with Alcohol");
+         Database.responseNames.add("Okay with weed and other drugs");
+         Database.responseNames.add("Studiousness");
+         Database.responseNames.add("Sharing");
+         Database.responseNames.add("Overnight guests");
+         Database.responseNames.add("Friends over");
+         Database.responseNames.add("Time in room");
+      }
+
+      return responseNames;
    }
 }

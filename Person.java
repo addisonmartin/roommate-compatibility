@@ -12,26 +12,12 @@ public class Person
    private String college;
    private ArrayList<Attribute> responses;
    private int gender; //0 is female, 1 is male
-   private static ArrayList<String> responseNames;
 
    public Person(String name, String college, int gender) {
       this.name = name;
       this.college = college;
       this.gender = gender;
       responses = new ArrayList<Attribute>();
-
-      if (Person.responseNames.size() == 0) {
-         Person.responseNames = new ArrayList<String>();
-         Person.responseNames.add("Bed Time");
-         Person.responseNames.add("Cleanliness");
-         Person.responseNames.add("Okay with Alcohol");
-         Person.responseNames.add("Okay with weed and other drugs");
-         Person.responseNames.add("Studiousness");
-         Person.responseNames.add("Sharing");
-         Person.responseNames.add("Overnight guests");
-         Person.responseNames.add("Friends over");
-         Person.responseNames.add("Time in room");
-      }
    }
 
    public Person(String name, String college) {

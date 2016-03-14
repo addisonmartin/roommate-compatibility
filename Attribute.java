@@ -24,6 +24,6 @@ public class Attribute
 
    public String toString()
    {
-      return name + ", value: " + value + ", importance: " + importance;
+      return name;
    }
 }
