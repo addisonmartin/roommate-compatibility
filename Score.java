@@ -39,10 +39,16 @@ public class Score implements Comparable<Score>{
    */
    public ArrayList<Attribute> getTop3Attributes() {
       ArrayList<Attribute> ordered = selectionSortScore(p1.getResponses(), p2.getResponses());
+      //TESTING
+      for(int k =0; k<ordered.size(); k++) {
+         System.out.println(ordered.get(0).getAttributeName());
+      }
       ArrayList<Attribute> top3 = new ArrayList<Attribute>();
       for(int i=0; i<3; i++) {
          top3.add(ordered.get(i));
       }
+      //TESTING
+      System.out.println(top3);
       return top3;
    }
 
@@ -111,5 +117,15 @@ public class Score implements Comparable<Score>{
    */
    public Person getPerson2() {
       return p2;
+   }
+
+   public static void main(String[] args) {
+      ArrayList<Person> people = Database.getPeople();
+      Person person1 = people.get(0);
+      Person person2 = people.get(1);
+
+      Score scoreP1P2 = new Score(person1, person2);
+      
+
    }
 }

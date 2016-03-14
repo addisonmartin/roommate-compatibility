@@ -50,16 +50,4 @@ public class Attribute
    public int getValue() {
       return value;
    }
-
-   /**
-   *Gets the Attribute's information such as name, numeric answer, and importance
-   * all in String form.
-   *
-   *@return The Attribute information such as name, numeric answer, and importance
-   * in String form
-   */
-   public String toString()
-   {
-      return name;
-   }
 }
