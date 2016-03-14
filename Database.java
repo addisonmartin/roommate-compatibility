@@ -36,7 +36,11 @@ public class Database {
 
          while (scanner.hasNextLine()) {
             personString = scanner.nextLine();
+            System.out.println(personString);
             personData = personString.split(", ");
+            for (int i = 0; i < personData.length; i++) {
+               //System.out.println
+            }
             person = new Person(personData[0], personData[1], personData[2]);//Check for valid input!
 
             for (int i = 3; i < personData.length - 3; i += 3) {
@@ -55,7 +59,7 @@ public class Database {
       }//Do I need to close file?
       //Maybe keep tihs stored somewhere? Even if just in the driver.
 
-      people = Database.checkForDuplicates(people);
+      //people = Database.checkForDuplicates(people);
       return people;
    }
 
@@ -134,5 +138,17 @@ public class Database {
       }
 
       return responseNames;
+   }
+
+   public static void main(String[] args) {
+      ArrayList<Person> people = getPeople();
+
+      for (Person prsn : people) {
+         System.out.println(prsn.getName());
+      }
+
+      for (int i = 0; i < people.size(); i++) {
+         System.out.println(people.get(i));
+      }
    }
 }

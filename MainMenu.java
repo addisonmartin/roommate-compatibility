@@ -92,7 +92,6 @@ public class MainMenu {
 
    public Person getPersonFromDatabase() {
       Scanner scanner = new Scanner(System.in);
-      scanner.nextLine();
       System.out.print("\n\tPlease enter their name now: ");
       String name = scanner.nextLine();
       Person person = null;
@@ -121,13 +120,14 @@ public class MainMenu {
       Scanner scanner = new Scanner(System.in);
       System.out.print("\tEnter your name: ");
       String name = scanner.nextLine();
+      System.out.println("\tTell us your college.");
+      System.out.println("\tPlease enter 1 for COSAM, 2 for CENG, 3 for CAED, 4 for CAFES, 5 for Orfalea College of Business, and 6 for CLA.");
       System.out.print("\tEnter your college: ");
-      System.out.print("\nPlease enter 1 for COSAM, 2 for CENG, 3 for CAED, 4 for CAFES, 5 for Orfalea College of Business, and 6 for CLA.");
       String stringCollege = scanner.nextLine();
 
       while (!stringCollege.equals(1) && !stringCollege.equals(2) && !stringCollege.equals(3) && !stringCollege.equals(4) && !stringCollege.equals(5) && !stringCollege.equals(6)) {
          System.out.println("\tPlease enter a valid number between 1 and 6.");
-         System.out.println("\tEnter your college: ");
+         System.out.print("\tEnter your college: ");
          stringCollege = scanner.nextLine();
       }
 
