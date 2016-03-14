@@ -86,7 +86,7 @@ public class MainMenu {
       else {
          return;
       }
-
+      //Check to make sure not the same gender!!!
       displayScore(new Score(person1, person2));
    }
 
@@ -111,7 +111,6 @@ public class MainMenu {
          person = getPersonFromUser();
       }
 
-      Database.addToDatabase(person);
       return person;
 
    }

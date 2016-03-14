@@ -14,7 +14,7 @@ import java.io.FileWriter;
 
 public class Database {
    private static final String filePath = "people.txt";
-   private static final int personStringLength = 30;
+   private static final int PERSON_STRING_LENGTH = 30;
    private static ArrayList<String> responseNames;
 
    public static ArrayList<Person> getPeople() {
@@ -36,14 +36,10 @@ public class Database {
 
          while (scanner.hasNextLine()) {
             personString = scanner.nextLine();
-            System.out.println(personString);
             personData = personString.split(", ");
-            for (int i = 0; i < personData.length; i++) {
-               //System.out.println
-            }
             person = new Person(personData[0], personData[1], personData[2]);//Check for valid input!
 
-            for (int i = 3; i < personData.length - 3; i += 3) {
+            for (int i = 3; i < PERSON_STRING_LENGTH; i += 3) {
                String attributeName = personData[i];
                int attributeValue = Integer.parseInt(personData[i + 1]);
                int attributeImportance = Integer.parseInt(personData[i + 2]);
@@ -118,7 +114,7 @@ public class Database {
                   responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", ";
             personData += attributeToAdd;
          }
-      }
+      }//IS this cooreect??
 
       return personData;
    }
@@ -145,10 +141,13 @@ public class Database {
 
       for (Person prsn : people) {
          System.out.println(prsn.getName());
-      }
+         System.out.println(prsn.getGender());
+         System.out.println(prsn.getCollege());
+         ArrayList<Attribute> responses = prsn.getResponses();
 
-      for (int i = 0; i < people.size(); i++) {
-         System.out.println(people.get(i));
+         for (Attribute response : responses) {
+            System.out.println(response.getAttributeName() + ", " + response.getValue() + ", " + response.getImportance());
+         }
       }
    }
 }
