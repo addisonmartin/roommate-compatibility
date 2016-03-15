@@ -32,7 +32,22 @@ public class Score implements Comparable<Score>{
    }
 
    public Attribute getWorstAttribute() {
-
+       ArrayList<Attribute> list1 = p1.getResponses();
+      ArrayList<Attribute> list2 = p2.getResponses();
+      ArrayList<Double> attributeScores = new ArrayList<Double>();
+      for(int i=0; i<list1.size(); i++) {
+         double val = Math.abs(list1.get(i).getValue() - list2.get(i).getValue());
+         double weightedAvg = (val*list1.get(i).getImportance()
+               + val*list2.get(i).getImportance())/2.0;
+         attributeScores.add(weightedAvg);
+      }
+      int max = 0;
+      for(int k =0; k<list2.size(); k++) {
+         if(attributeScores.get(max)<attributeScores.get(k)) {
+            max = k;
+         }
+      }
+      return list1.get(max);
    }
 
    public Attribute getBestAttribute() {
@@ -47,8 +62,8 @@ public class Score implements Comparable<Score>{
       }
       int min = 0;
       for(int k =0; k<list2.size(); k++) {
-         if(attributeScores.get(min)>attributeScores.get(i)) {
-            min = i;
+         if(attributeScores.get(min)>attributeScores.get(k)) {
+            min = k;
          }
       }
       return list1.get(min);
@@ -123,5 +138,4 @@ public class Score implements Comparable<Score>{
    public Person getPerson2() {
       return p2;
    }
-
 }
