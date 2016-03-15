@@ -31,25 +31,27 @@ public class Score implements Comparable<Score>{
       }
    }
 
-   /**
-   *Finds the top 3 Attributes that the people had most in common in order of
-   * most agreed on to least and then returns them in an ArrayList of Attributes
-   *
-   *@return an ArrayList of the top 3 Attributes that the 2 people agreed on most in order.
-   */
-   public ArrayList<Attribute> getTop3Attributes() {
-      ArrayList<Attribute> ordered = selectionSortScore(p1.getResponses(), p2.getResponses());
-      //TESTING
-      for(int k =0; k<ordered.size(); k++) {
-         System.out.println(ordered.get(0).getAttributeName());
+   public Attribute getWorstAttribute() {
+
+   }
+
+   public Attribute getBestAttribute() {
+      ArrayList<Attribute> list1 = p1.getResponses();
+      ArrayList<Attribute> list2 = p2.getResponses();
+      ArrayList<Double> attributeScores = new ArrayList<Double>();
+      for(int i=0; i<list1.size(); i++) {
+         double val = Math.abs(list1.get(i).getValue() - list2.get(i).getValue());
+         double weightedAvg = (val*list1.get(i).getImportance()
+               + val*list2.get(i).getImportance())/2.0;
+         attributeScores.add(weightedAvg);
       }
-      ArrayList<Attribute> top3 = new ArrayList<Attribute>();
-      for(int i=0; i<3; i++) {
-         top3.add(ordered.get(i));
+      int min = 0;
+      for(int k =0; k<list2.size(); k++) {
+         if(attributeScores.get(min)>attributeScores.get(i)) {
+            min = i;
+         }
       }
-      //TESTING
-      System.out.println(top3);
-      return top3;
+      return list1.get(min);
    }
 
    /**
@@ -61,31 +63,34 @@ public class Score implements Comparable<Score>{
       CompatibilityTest test = new AttributeCompatibilityTest(p1, p2);
       return test.calculate();
    }
-
+/*
    private static ArrayList<Attribute> selectionSortScore(ArrayList<Attribute> list1,
          ArrayList<Attribute> list2) {
       int min;
-      ArrayList<Attribute> toSort = list1;
-      ArrayList<Attribute> sortedAttributes = new ArrayList<Attribute>();
-      for(int i=0; i<list2.size()-1; i++) {
+      ArrayList<Attribute> toSort1 = new ArrayList<Attribute>(list1);
+      ArrayList<Attribute> toSort2 = new ArrayList<Attribute>(list2);
+      ArrayList<Attribute> sorted = new ArrayList<Attribute>();
+      for(int i=0; i<toSort1.size()-1; i++) {
          min = i;
-         for(int k=i+1; k<list2.size(); k++) {
-            double valK = Math.abs(toSort.get(k).getValue() - list2.get(k).getValue());
-            double weightedAvgK = (valK*toSort.get(k).getImportance()
-                  + valK*list2.get(k).getImportance())/2.0;
-            double valMin = Math.abs(toSort.get(min).getValue() - list2.get(min).getValue());
-            double weightedAvgMin = (valMin*toSort.get(min).getImportance()
-                  + valMin*list2.get(min).getImportance())/2.0;
+         for(int k=i+1; k<toSort1.size(); k++) {
+            double valK = Math.abs(toSort1.get(k).getValue() - toSort2.get(k).getValue());
+            double weightedAvgK = (valK*toSort1.get(k).getImportance()
+                  + valK*toSort2.get(k).getImportance())/2.0;
+            double valMin = Math.abs(toSort1.get(min).getValue() - toSort2.get(min).getValue());
+            double weightedAvgMin = (valMin*toSort1.get(min).getImportance()
+                  + valMin*toSort2.get(min).getImportance())/2.0;
+
             if(weightedAvgMin>weightedAvgK) {
                min = k;
             }
          }
-      Attribute temp = toSort.get(min);
-      toSort.set(min, toSort.get(i));
-      toSort.set(i, temp);
+      sorted.add(list1.get(min));
+      toSort1.remove(min);
+      toSort2.remove(min);
       }
-      return toSort;
+      return sorted;
    }
+*/
 
    /**
    *Compares 2 Scores to eachother, and returns a positive number if the score we are
@@ -119,13 +124,4 @@ public class Score implements Comparable<Score>{
       return p2;
    }
 
-   public static void main(String[] args) {
-      ArrayList<Person> people = Database.getPeople();
-      Person person1 = people.get(0);
-      Person person2 = people.get(1);
-
-      Score scoreP1P2 = new Score(person1, person2);
-      
-
-   }
 }
