@@ -119,24 +119,7 @@ public class Database {
       return personData;
    }
 
-   public static ArrayList<String> getResponseNames() {
-      if (Database.responseNames.size() == 0) {
-         Database.responseNames = new ArrayList<String>();
-         Database.responseNames.add("Bed Time");
-         Database.responseNames.add("Cleanliness");
-         Database.responseNames.add("Okay with Alcohol");
-         Database.responseNames.add("Okay with weed and other drugs");
-         Database.responseNames.add("Studiousness");
-         Database.responseNames.add("Sharing");
-         Database.responseNames.add("Overnight guests");
-         Database.responseNames.add("Friends over");
-         Database.responseNames.add("Time in room");
-      }
-
-      return responseNames;
-   }
-
-   public static void main(String[] args) {
+   public static void main(String[] args) {//REMOVE WHEN DONE TESTING
       ArrayList<Person> people = getPeople();
 
       for (Person prsn : people) {
