@@ -9,7 +9,6 @@ import java.util.*;
 public class Score implements Comparable<Score>{
    private Person p1;
    private Person p2;
-   private ArrayList<Integer> all;
 
    /**
    *Constructs a Score object for 2 people from the Person class.
@@ -24,13 +23,13 @@ public class Score implements Comparable<Score>{
       ArrayList<Attribute> p2List = p2.getResponses();
       int sum = 0;
       int diff = 0;
-      for(int i =0; i<p1List.size(); i++) {
-         diff = p1List.get(i).getValue() - p2List.get(i).getValue();
-         diff = Math.abs(diff);
-         //all.add(diff*p1List.get(i).getImportance());
-      }
    }
 
+   /**
+   *Finds the Attribute that the 2 people have least in common and returns it.
+   *
+   *@return The Attribute that they have least in common.
+   */
    public Attribute getWorstAttribute() {
        ArrayList<Attribute> list1 = p1.getResponses();
       ArrayList<Attribute> list2 = p2.getResponses();
@@ -50,6 +49,11 @@ public class Score implements Comparable<Score>{
       return list1.get(max);
    }
 
+   /**
+   *Finds the Attribute that the 2 people have most in common and returns it.
+   *
+   *@return The Attribute that they have most in common.
+   */
    public Attribute getBestAttribute() {
       ArrayList<Attribute> list1 = p1.getResponses();
       ArrayList<Attribute> list2 = p2.getResponses();
@@ -78,6 +82,7 @@ public class Score implements Comparable<Score>{
       CompatibilityTest test = new AttributeCompatibilityTest(p1, p2);
       return test.calculate();
    }
+
 /*
    private static ArrayList<Attribute> selectionSortScore(ArrayList<Attribute> list1,
          ArrayList<Attribute> list2) {
