@@ -172,14 +172,14 @@ public class MainMenu {
 
       if (person == null) {
          System.out.println("\tSorry, it seems we don't have that person's info stored already!");
-         System.out.println("\tWould you like to try again, enter their info now, or return to the menu?");
+         System.out.println("\tWould you like to enter their info now or try again?");
          System.out.println("\tEnter \'1\' to enter their info now or enter \'2\' to try again.");
          System.out.print("\tYour choice: ");
          String stringInput = scanner.nextLine();
 
          while (!stringInput.equals("1") && !stringInput.equals("2")) {
-            System.out.println("\n\tPlease enter 1 or 2.");
-            System.out.println("\tYour choice: ");
+            System.out.println("\tPlease enter 1 or 2.");
+            System.out.print("\tYour choice: ");
             stringInput = scanner.nextLine();
          }
 
@@ -236,7 +236,7 @@ public class MainMenu {
       String stringGender = scanner.nextLine();
 
       while (!stringGender.equals("0") && !stringGender.equals("1")) {
-         System.out.println("\n\tPlease enter 0 for female, 1 for male: ");
+         System.out.print("\tPlease enter 0 for female, 1 for male: ");
          stringGender = scanner.nextLine();
       }
 
@@ -251,9 +251,10 @@ public class MainMenu {
 
       Person person = new Person(name, stringCollege, stringGender);
 
-      System.out.println("\n\tPlease answer the following questions.");
+      System.out.println("\n\n\tPlease answer the following questions.");
       System.out.println("\tYou will be asked one question about yourself on a scale of 1 - 10,");
       System.out.println("\tand another question about how important that is to you on a scale of 1 - 5.");
+      System.out.println("\tWith 1 being the least important, and 10 or 5 being the most important.");
       System.out.println("\tPlease answer honestly. Lets begin.\n");
 
       int attributeKeywordIndex = 0;
@@ -314,7 +315,7 @@ public class MainMenu {
       String stringInput = scanner.nextLine();
 
       while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
-         System.out.println("\n\tPlease enter 1, 2, or 3.");
+         System.out.println("\tPlease enter 1, 2, or 3.");
          System.out.print("\tYour choice: ");
          stringInput = scanner.nextLine();
       }
@@ -341,21 +342,55 @@ public class MainMenu {
          }
       }
 
+      ArrayList<Score> sortedScores = new ArrayList<Score>();
+
       if (scores.size() != 0) {
          Score maxScore = scores.get(0);
 
          for (Score score : scores) {
             if (score.compareTo(maxScore) > 0) {
                maxScore = score;
+               //sortedScores.add(maxScore);
             }
          }
 
-         displayScore(maxScore);
-         //displayScore(scores.get(1));
-         //displayScore(scores.get(2));
+         sortedScores.add(maxScore);
+
+         if (sortedScores.size() >= 3) {
+            System.out.print(ANSI_CLS + ANSI_HOME);
+            System.out.flush();
+            System.out.println("\tYour best match...\n");
+            displayScore(sortedScores.get(0));
+            System.out.println("\tYour second best match...\n");
+            displayScore(sortedScores.get(1));
+            System.out.println("\tYour third best match...\n");
+            displayScore(sortedScores.get(2));
+         }
+         else if (sortedScores.size() == 2) {
+            System.out.print(ANSI_CLS + ANSI_HOME);
+            System.out.flush();
+            System.out.println("\tYour best match...\n");
+            displayScore(sortedScores.get(0));
+            System.out.println("\tYour second best match...\n");
+            displayScore(sortedScores.get(1));
+         }
+         else if (sortedScores.size() == 1) {
+            System.out.print(ANSI_CLS + ANSI_HOME);
+            System.out.flush();
+            System.out.println("\tYour best match...\n");
+            displayScore(sortedScores.get(0));
+         }
+         else {
+            System.out.print(ANSI_CLS + ANSI_HOME);
+            System.out.flush();
+            System.out.println("\n\tSorry, it seems we could not find any matches for you... :(");
+            System.out.println("\n\tPlease make sure there is other people's info stored and try again.");
+
+         }
       }
-      else
-      {
+      else {
+         System.out.print(ANSI_CLS + ANSI_HOME);
+         System.out.flush();
          System.out.println("\n\tSorry, it seems we could not find any matches for you... :(");
          System.out.println("\n\tPlease make sure there is other people's info stored and try again.");
       }
@@ -380,9 +415,6 @@ public class MainMenu {
    }
 
    private void displayScore(Score score) {
-      System.out.print(ANSI_CLS + ANSI_HOME);
-      System.out.flush();
-
       if ((score.getPerson1().getName().equalsIgnoreCase("Addison Martin") && 
           score.getPerson2().getName().equalsIgnoreCase("Eriq Augustine")) ||
          (score.getPerson2().getName().equalsIgnoreCase("Addison Martin") &&

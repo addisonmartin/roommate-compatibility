@@ -22,9 +22,9 @@ public class Person
    *@param gender The Person's gender.
    */
    public Person(String name, String college, String gender) {
-      this.name = name;
-      this.college = college;
-      this.gender = gender;
+      this.name = new String(name);
+      this.college = new String(college);
+      this.gender = new String(gender);
       responses = new ArrayList<Attribute>();
    }
 

@@ -49,14 +49,14 @@ public class Database {
          while (scanner.hasNextLine()) {
             personString = scanner.nextLine();
             personData = personString.split(", ");
-            person = new Person(personData[0], personData[1], personData[2]);//Check for valid input!
+            person = new Person(personData[0], personData[1], personData[2]);
 
             for (int i = 3; i < PERSON_STRING_LENGTH; i += 3) {
                String attributeName = personData[i];
                int attributeValue = Integer.parseInt(personData[i + 1]);
                int attributeImportance = Integer.parseInt(personData[i + 2]);
                Attribute attribute = new Attribute(attributeName, attributeValue, attributeImportance);
-               person.saveResponse(attribute); //Make sure to check for valid input
+               person.saveResponse(attribute);
             }
 
             people.add(person);
@@ -69,9 +69,10 @@ public class Database {
          System.out.println("\treturn it to a blank state and try again.");
          System.out.println("\n\tClosing program now...");
          System.exit(1);
-      }//Do I need to close file?
+         return null;
+      }
 
-      people = Database.checkForDuplicates(people);
+      //people = Database.checkForDuplicates(people);
       return people;
    }
 
