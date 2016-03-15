@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class MainMenu {
+   private ArrayList<String> questions;
+
+   public MainMenu() {
+      questions = new ArrayList<String>();
+      //questions.add(
+   }
 
    public void run() {
       displayWelcomeMessage();
@@ -92,7 +98,7 @@ public class MainMenu {
 
    public Person getPersonFromDatabase() {
       Scanner scanner = new Scanner(System.in);
-      System.out.print("\n\tPlease enter their name now: ");
+      System.out.print("\n\tPlease enter their name now: ");//Check for valid input
       String name = scanner.nextLine();
       Person person = null;
 
@@ -107,7 +113,7 @@ public class MainMenu {
 
       if (person == null) {
          System.out.println("\tSorry, it seems we don't have that person's info stored already!");
-         System.out.println("\tWhy don't you enter their info.");
+         System.out.println("\tWhy don't you enter their info.");//Try again or enter their info?? Or maybe exit.
          person = getPersonFromUser();
       }
 
@@ -124,7 +130,7 @@ public class MainMenu {
       System.out.print("\tEnter your college: ");
       String stringCollege = scanner.nextLine();
 
-      while (!stringCollege.equals(1) && !stringCollege.equals(2) && !stringCollege.equals(3) && !stringCollege.equals(4) && !stringCollege.equals(5) && !stringCollege.equals(6)) {
+      while (!stringCollege.equals("1") && !stringCollege.equals("2") && !stringCollege.equals("3") && !stringCollege.equals("4") && !stringCollege.equals("5") && !stringCollege.equals("6")) {
          System.out.println("\tPlease enter a valid number between 1 and 6.");
          System.out.print("\tEnter your college: ");
          stringCollege = scanner.nextLine();
@@ -146,8 +152,9 @@ public class MainMenu {
          stringCollege = "CLA";
       }
 
+      System.out.println("\tTell us your gender.");
+      System.out.println("\tPlease enter 0 for female, 1 for male.");
       System.out.print("\tEnter your gender: ");
-      System.out.print("\n\tPlease enter 0 for female, 1 for male.");
       String stringGender = scanner.nextLine();
 
       while (!stringGender.equals("0") && !stringGender.equals("1")) {
@@ -165,39 +172,59 @@ public class MainMenu {
       }
 
       Person person = new Person(name, stringCollege, stringGender);
-
-      ArrayList<String> responseNames = Database.getResponseNames();
-
-      for (String responseName : responseNames) {
-         Attribute response = askAboutAttribute(responseName);
-         person.saveResponse(response);
-      }
-
       Database.addToDatabase(person);
+
       return person;
    }
 
    public Attribute askAboutAttribute(String name) {
-      String lowerCaseName = name.toLowerCase();
-      int[] responses = new int[2];
+      Scanner scanner = new Scanner(System.in);
 
-      System.out.println("\tOn a scale of 1 - 10,");
-      System.out.println("\tWith 1 being the earliest/least, and 10 being the latest/most");
-      System.out.print("\tWhen/how okay are you with " + lowerCaseName + ": ");
-      Scanner scanner = new Scanner(System.in); //Check for valid input!
-      responses[0] = scanner.nextInt();
+      for (int i = 0; i < questions.size(); i++) {
+         System.out.println(questions.get(i));
+         String value = scanner.nextLine();
 
-      System.out.println("\tOn a scale of 1 - 5");
-      System.out.println("\tWith 1 being the least and 5 being the most");
-      System.out.print("\tHow important is this to you: ");
-      responses[1] = scanner.nextInt();//Check for valid input!!
+         while (!value.equals("1") && !value.equals("2") && !value.equals("3") &&
+                !value.equals("4") && !value.equals("5") && !value.equals("6") &&
+                !value.equals("7") && !value.equals("8") && !value.equals("9") &&
+                !value.equals("10"))
+         {
+            System.out.println("Please enter a valid value between 1 and 10");
+            System.out.print("Value: ");
+            value = scanner.nextLine();
+         }
+      }
 
-      return new Attribute(name, responses[0], responses[1]);
+      return null;
    }
 
    public void comparePersonToDatabase() {
-      System.out.println("\tFirst, please enter your infomation.\n");
-      Person person1 = getPersonFromUser();//Check to see if they want to pull their info from the database
+      System.out.println("\n\n\tFirst, would you like to enter a new person or pull someone's data from the databse?");
+      System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
+      System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
+      System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
+      System.out.print("\tYour choice: ");
+      Scanner scanner = new Scanner(System.in);
+      int input = scanner.nextInt(); //Remeber check for valid input!
+
+      while (input != 1 && input != 2 && input != 3) {
+         System.out.println("\nPlease enter 1, 2, or 3.");
+         System.out.print("\tYour choice: ");
+         input = scanner.nextInt();
+      }
+
+      Person person1 = null;
+
+      if (input == 1) {
+         person1 = getPersonFromUser();
+      }
+      else if (input == 2) {
+         person1 = getPersonFromDatabase();
+      }
+      else {
+         return;
+      }
+
       List<Person> people = Database.getPeople();
       List<Score> scores = new ArrayList<Score>();
 
@@ -247,7 +274,7 @@ public class MainMenu {
       System.out.println("\t**********");
       System.out.println("\t***" + score.getScore() + "***");
       System.out.println("\t**********");
-      System.out.println("\t\nYour top three attributes: ");
+      System.out.println("\tYour top three attributes: ");
       System.out.println("\t\t" + score.getTop3Attributes().get(0));
       System.out.println("\t\t" + score.getTop3Attributes().get(1));
       System.out.println("\t\t" + score.getTop3Attributes().get(2));
