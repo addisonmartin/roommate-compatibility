@@ -1,3 +1,9 @@
+/** Provides the implementation of a main menu in order to compare people, add people, or whatever else the user decides to do.
+*
+* @@author Natalie Keelan and Addison Martin
+* @version Program 7
+*/
+
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +15,9 @@ public class MainMenu {
    private final String ANSI_CLS = "\u001b[2J";
    private final String ANSI_HOME = "\u001b[H";
 
+   /**
+   * Constructs a new MainMenu object and intializes a private array of the questions that we ask.
+   */
    public MainMenu() {
       questions = new ArrayList<String>();
       questions.add("When do you go to sleep on an average day? Scale of 1-10 (1 being at or before 10:00 or before, 5 being at 12:00, 10 being after 2:00 am)");
@@ -42,6 +51,9 @@ public class MainMenu {
       attributeKeywords.add("Time in room");
    }
 
+   /**
+   * Allows the program to be run until the user wants to quit. Laumches other methods as the user wants.
+   */
    public void run() {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
@@ -77,7 +89,7 @@ public class MainMenu {
       }
    }
 
-   public void compareTwoPeople() {
+   private void compareTwoPeople() {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
@@ -140,7 +152,7 @@ public class MainMenu {
       displayScore(new Score(person1, person2));
    }
 
-   public Person getPersonFromDatabase() {
+   private Person getPersonFromDatabase() {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
@@ -161,12 +173,12 @@ public class MainMenu {
       if (person == null) {
          System.out.println("\tSorry, it seems we don't have that person's info stored already!");
          System.out.println("\tWould you like to try again, enter their info now, or return to the menu?");
-         System.out.println("\tEnter \'1\' to enter their info now, enter \'2\' to try again, enter \'3\' to retun to the menu.");
+         System.out.println("\tEnter \'1\' to enter their info now or enter \'2\' to try again.");
          System.out.print("\tYour choice: ");
          String stringInput = scanner.nextLine();
 
-         while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
-            System.out.println("\n\tPlease enter 1, 2, or 3.");
+         while (!stringInput.equals("1") && !stringInput.equals("2")) {
+            System.out.println("\n\tPlease enter 1 or 2.");
             System.out.println("\tYour choice: ");
             stringInput = scanner.nextLine();
          }
@@ -179,13 +191,12 @@ public class MainMenu {
          else if (input == 2) {
             person = getPersonFromDatabase();
          }
-         //Input 3 should break out to main menu
       }
 
       return person;
    }
 
-   public Person getPersonFromUser() {
+   private Person getPersonFromUser() {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
@@ -255,7 +266,7 @@ public class MainMenu {
       return person;
    }
 
-   public Attribute askAboutAttribute(String question1, String question2, String keyword) {
+   private Attribute askAboutAttribute(String question1, String question2, String keyword) {
       Scanner scanner = new Scanner(System.in);
       System.out.println("\t" + question1);
       System.out.print("\tValue: ");
@@ -290,7 +301,7 @@ public class MainMenu {
       return new Attribute(keyword, intValue, intImportance);
    }
 
-   public void comparePersonToDatabase() {
+   private void comparePersonToDatabase() {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
@@ -350,7 +361,7 @@ public class MainMenu {
       }
    }
 
-   public void displayWelcomeMessage() {
+   private void displayWelcomeMessage() {
       System.out.println("\t** ***** ***** ***** ***** ***** ***** ***** ***** **");
       System.out.println("\t**                                                 **");
       System.out.println("\t**   Welcome to the Roommate Compatibility Test!   **");
@@ -359,7 +370,7 @@ public class MainMenu {
       System.out.println("\t** ***** ***** ***** ***** ***** ***** ***** ***** **\n\n");
    }
 
-   public void displayOptions() {
+   private void displayOptions() {
       System.out.println("\n\n\n\tWhat would you like to do...?");
       System.out.println("\tPlease enter \'1\' if you would like to get");
       System.out.println("\ttwo people's Roommate Compatibility Score (RCS)");
@@ -368,7 +379,7 @@ public class MainMenu {
       System.out.println("\n\tEnter \'3\' if you would like to exit the program.\n");
    }
 
-   public void displayScore(Score score) {
+   private void displayScore(Score score) {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
@@ -385,7 +396,6 @@ public class MainMenu {
          System.out.println("\t***********");
          System.out.println("\n\n\tWow! Much compatibility!");
          System.out.println("\tMaybe you should give us a 100...");
-         System.out.println("\tYou know, since we're both cool kids!");
          System.out.println("\n\t** ***** ***** ***** ***** ***** ***** ***** ***** **");
       }
 

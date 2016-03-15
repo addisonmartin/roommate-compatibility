@@ -28,10 +28,8 @@ public class NameCompatibilityTest implements CompatibilityTest
    *@return The percent compatibility for the 2 people based on the letters in their names
    */
    public double calculate() {
-      String name1 = person1.getName();
-      //changed this line to say person2.getName() not sure if thats what you wanted but I thought it
-      //might have been a tiny mistake. it said name2 = person1.getName() before.
-      String name2 = person2.getName(); //Do we need to make deep copies? Probably should to fend off Eriq.
+      String name1 = new String(person1.getName());
+      String name2 = new String(person2.getName());
 
       if (name1.compareTo(name2) > 0) {
          String temp = name1;

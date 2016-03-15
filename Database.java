@@ -19,6 +19,11 @@ public class Database {
    private static final String ANSI_CLS = "\u001b[2J";
    private static final String ANSI_HOME = "\u001b[H";
 
+   /**
+   * Returns an ArrayList of Person objects representing all of the Person data currently stored in the database.
+   *
+   * @return An ArayLIst of Person objects
+   */
    public static ArrayList<Person> getPeople() {
       ArrayList<Person> people = new ArrayList<Person>();
       Scanner scanner;
@@ -70,7 +75,7 @@ public class Database {
       return people;
    }
 
-   public static ArrayList<Person> checkForDuplicates(ArrayList<Person> people) {
+   private static ArrayList<Person> checkForDuplicates(ArrayList<Person> people) {
       for (int i = 0; i < people.size(); i++) {
          for (int j = 0; j < people.size(); j++) {
             if (people.get(i).equals(people.get(j))) {
@@ -82,6 +87,11 @@ public class Database {
       return people;
    }
 
+   /**
+   * Adds a Person object to the database of saved pepole for later retrieval.
+   *
+   * @param person The person object who you want to add to the database.
+   */
    public static void addToDatabase(Person person) {
       BufferedWriter bw = null;
 
