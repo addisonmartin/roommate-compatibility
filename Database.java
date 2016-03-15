@@ -26,13 +26,14 @@ public class Database {
       try {
          scanner = new Scanner(new File(filePath));
       } catch (IOException e) {
-          System.out.print(ANSI_CLS + ANSI_HOME);
+         System.out.print(ANSI_CLS + ANSI_HOME);
          System.out.flush();
          System.out.println("\tIt seems the text document storing people has been modified in");
          System.out.println("\tan unallowed way. Please restore the changes or completely");
          System.out.println("\treturn it to a blank state and try again.");
          System.out.println("\n\tClosing program now...");
          System.exit(1);
+         return null;
       }
 
       try {
