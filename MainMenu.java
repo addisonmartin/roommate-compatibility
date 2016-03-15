@@ -274,9 +274,9 @@ public class MainMenu {
       System.out.println("\t**********");
       System.out.println("\t***" + score.getScore() + "***");
       System.out.println("\t**********");
-      System.out.println("\tYour top three attributes: ");
-      System.out.println("\t\t" + score.getTop3Attributes().get(0));
-      System.out.println("\t\t" + score.getTop3Attributes().get(1));
-      System.out.println("\t\t" + score.getTop3Attributes().get(2));
+      System.out.println("\tYour top attribute in common: ");
+      System.out.println("\t\t" + score.getBestAttribute().getAttributeName());
+      System.out.println("\tYour lowest attribute in common: ");
+      System.out.println("\t\t" + score.getWorstAttribute().getAttributeName());
    }
 }
