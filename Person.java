@@ -89,10 +89,10 @@ public class Person
       }
 
       Person per = (Person)other;
-      boolean equals = this.name.equals(per.name);
-      equals &= this.college.equals(per.college);
-      equals &= this.gender == per.gender;
+      boolean test1 = this.name.equals(per.name);
+      boolean test2 = this.college.equals(per.college);
+      boolean test3 = this.gender.equals(per.gender);
 
-      return equals;
+      return (test1 && test2 && test3);
    }
 }
