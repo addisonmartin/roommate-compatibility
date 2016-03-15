@@ -123,7 +123,7 @@ public class Score implements Comparable<Score>{
    * and zero if they have the same score.
    */
    public int compareTo(Score other) {
-      return (int)(this.getScore() - other.getScore());
+      return (int)this.getScore() - (int)other.getScore();
    }
 
    /**

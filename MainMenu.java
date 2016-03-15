@@ -359,8 +359,8 @@ public class MainMenu {
          return;
       }
 
-      List<Person> people = Database.getPeople();
-      List<Score> scores = new ArrayList<Score>();
+      ArrayList<Person> people = Database.getPeople();
+      ArrayList<Score> scores = new ArrayList<Score>();
 
       for (Person person : people) {
          if (person1.getGender().equals(person.getGender()) && !person1.equals(person)) {
@@ -368,43 +368,32 @@ public class MainMenu {
          }
       }
 
-      ArrayList<Score> sortedScores = new ArrayList<Score>();
-
       if (scores.size() != 0) {
-         Score maxScore = scores.get(0);
-
-         for (Score score : scores) {
-            if (score.compareTo(maxScore) > 0) {
-               maxScore = score;
-               //sortedScores.add(maxScore);
-            }
-         }
-
-         sortedScores.add(maxScore);
+         ArrayList<Score> sortedScores = sortScores(scores);
 
          if (sortedScores.size() >= 3) {
             System.out.print(ANSI_CLS + ANSI_HOME);
             System.out.flush();
             System.out.println("\tYour best match...\n");
-            displayScore(sortedScores.get(0));
+            displayScore(sortedScores.get(sortedScores.size() - 1));
             System.out.println("\tYour second best match...\n");
-            displayScore(sortedScores.get(1));
+            displayScore(sortedScores.get(sortedScores.size() - 2));
             System.out.println("\tYour third best match...\n");
-            displayScore(sortedScores.get(2));
+            displayScore(sortedScores.get(sortedScores.size() - 3));
          }
          else if (sortedScores.size() == 2) {
             System.out.print(ANSI_CLS + ANSI_HOME);
             System.out.flush();
             System.out.println("\tYour best match...\n");
-            displayScore(sortedScores.get(0));
+            displayScore(sortedScores.get(sortedScores.size() - 1));
             System.out.println("\tYour second best match...\n");
-            displayScore(sortedScores.get(1));
+            displayScore(sortedScores.get(sortedScores.size() - 2));
          }
          else if (sortedScores.size() == 1) {
             System.out.print(ANSI_CLS + ANSI_HOME);
             System.out.flush();
             System.out.println("\tYour best match...\n");
-            displayScore(sortedScores.get(0));
+            displayScore(sortedScores.get(sortedScores.size() - 1));
          }
          else {
             System.out.print(ANSI_CLS + ANSI_HOME);
@@ -422,6 +411,23 @@ public class MainMenu {
          System.out.println("\n\tPlease make sure there is other people's info"
             + " stored and try again.");
       }
+   }
+
+   private ArrayList<Score> sortScores(ArrayList<Score> unsortedScores) {
+      ArrayList<Score> scores = new ArrayList<Score>(unsortedScores);
+      Score temp;
+
+      for (int i = 1; i < scores.size() ; i++) {
+         for (int j = i; j > 0; j--) {
+            if(scores.get(j).compareTo(scores.get(j - 1)) < 0) {
+               temp = scores.get(j);
+               scores.set(j, scores.get(j - 1));
+               scores.set(j - 1, temp);
+            }
+         }
+      }
+
+      return scores;
    }
 
    private void displayWelcomeMessage() {
@@ -448,26 +454,26 @@ public class MainMenu {
          (score.getPerson2().getName().equalsIgnoreCase("Addison Martin") &&
           score.getPerson1().getName().equalsIgnoreCase("Eriq Augustine")))
       {
-         System.out.println("\n\n\t" + score.getPerson1().getName() + " and...");
+         System.out.println("\n\t" + score.getPerson1().getName() + " and...");
          System.out.println("\t" + score.getPerson2().getName());
          System.out.println("\tgot a RCS of...");
-         System.out.println("\n\n\t***********");
+         System.out.println("\n\t***********");
          System.out.println("\t** 100.0 **");
          System.out.println("\t***********");
-         System.out.println("\n\n\tWow! Much compatibility!");
+         System.out.println("\ntWow! Much compatibility!");
          System.out.println("\tMaybe you should give us a 100...");
          System.out.println("\n\t** ***** ***** ***** ***** ***** ***** ***** ***** **");
       }
 
       else
       {
-         System.out.println("\n\n\t" + score.getPerson1().getName() + " and...");
+         System.out.println("\n\t" + score.getPerson1().getName() + " and...");
          System.out.println("\t" + score.getPerson2().getName());
          System.out.println("\tgot a RCS of...");
-         System.out.println("\n\n\t***********");
+         System.out.println("\n\t***********");
          System.out.println("\t** " + score.getScore() + " **");
          System.out.println("\t***********");
-         System.out.println("\n\n\tYour top attribute in common: ");
+         System.out.println("\n\tYour top attribute in common: ");
          System.out.println("\t\t" + score.getBestAttribute().getAttributeName());
          System.out.println("\n\tYour lowest attribute in common: ");
          System.out.println("\t\t" + score.getWorstAttribute().getAttributeName());

@@ -81,7 +81,7 @@ public class Database {
 
    private static ArrayList<Person> checkForDuplicates(ArrayList<Person> people) {
       for (int i = 0; i < people.size(); i++) {
-         for (int j = 0; j < people.size(); j++) {
+         for (int j = i; j < people.size(); j++) {
             if (people.get(i).equals(people.get(j))) {
                people.remove(j);
             }
