@@ -16,6 +16,8 @@ public class Database {
    private static final String filePath = "people.txt";
    private static final int PERSON_STRING_LENGTH = 30;
    private static ArrayList<String> responseNames;
+   private static final String ANSI_CLS = "\u001b[2J";
+   private static final String ANSI_HOME = "\u001b[H";
 
    public static ArrayList<Person> getPeople() {
       ArrayList<Person> people = new ArrayList<Person>();
@@ -24,9 +26,13 @@ public class Database {
       try {
          scanner = new Scanner(new File(filePath));
       } catch (IOException e) {
-         System.out.println("Error while reading from file: ");
-         e.printStackTrace();
-         return null;
+          System.out.print(ANSI_CLS + ANSI_HOME);
+         System.out.flush();
+         System.out.println("\tIt seems the text document storing people has been modified in");
+         System.out.println("\tan unallowed way. Please restore the changes or completely");
+         System.out.println("\treturn it to a blank state and try again.");
+         System.out.println("\n\tClosing program now...");
+         System.exit(1);
       }
 
       try {
@@ -50,12 +56,16 @@ public class Database {
             people.add(person);
          }
       } catch (Exception e) {
-         System.out.println("Error while inputing people from file: ");
-         e.printStackTrace();
+         System.out.print(ANSI_CLS + ANSI_HOME);
+         System.out.flush();
+         System.out.println("\tIt seems the text document storing people has been modified in");
+         System.out.println("\tan unallowed way. Please restore the changes or completely");
+         System.out.println("\treturn it to a blank state and try again.");
+         System.out.println("\n\tClosing program now...");
+         System.exit(1);
       }//Do I need to close file?
-      //Maybe keep tihs stored somewhere? Even if just in the driver.
 
-      //people = Database.checkForDuplicates(people);
+      people = Database.checkForDuplicates(people);
       return people;
    }
 
@@ -81,15 +91,25 @@ public class Database {
          bw.newLine();
          bw.flush();
       } catch (IOException e) {
-         System.out.println("Error while adding Person to database: ");
-         e.printStackTrace();
+         System.out.print(ANSI_CLS + ANSI_HOME);
+         System.out.flush();
+         System.out.println("\tIt seems the text document storing people has been modified in");
+         System.out.println("\tan unallowed way. Please restore the changes or completely");
+         System.out.println("\treturn it to a blank state and try again.");
+         System.out.println("\n\tClosing program now...");
+         System.exit(1);
       } finally {
          if (bw != null) {
             try {
                bw.close();
             } catch (IOException e) {
-               System.out.println("Error while trying to close file writer: ");
-               e.printStackTrace();
+               System.out.print(ANSI_CLS + ANSI_HOME);
+               System.out.flush();
+               System.out.println("\tIt seems the text document storing people has been modified in");
+               System.out.println("\tan unallowed way. Please restore the changes or completely");
+               System.out.println("\treturn it to a blank state and try again.");
+               System.out.println("\n\tClosing program now...");
+               System.exit(1);
             }
          }
       }
@@ -103,34 +123,29 @@ public class Database {
 
       ArrayList<Attribute> responses = person.getResponses();
 
-      for (int i = 0; i < responses.size(); i++) {
-         if (i == responses.size() - 1) {
-            String attributeToAdd = responses.get(i).getAttributeName() + ", "
-                  + responses.get(i).getValue() + ", " + responses.get(i).getImportance();
-            personData += attributeToAdd;
+      try {
+         for (int i = 0; i < responses.size(); i++) {
+            if (i == responses.size() - 1) {
+               String attributeToAdd = responses.get(i).getAttributeName() + ", "
+                     + responses.get(i).getValue() + ", " + responses.get(i).getImportance();
+               personData += attributeToAdd;
+            }
+            else {
+               String attributeToAdd = responses.get(i).getAttributeName() + ", " +
+                     responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", ";
+               personData += attributeToAdd;
+            }
          }
-         else {
-            String attributeToAdd = responses.get(i).getAttributeName() + ", " +
-                  responses.get(i).getValue() + ", " + responses.get(i).getImportance() + ", ";
-            personData += attributeToAdd;
-         }
-      }//IS this cooreect??
+      } catch (Exception e) {
+         System.out.print(ANSI_CLS + ANSI_HOME);
+         System.out.flush();
+         System.out.println("\tIt seems the text document storing people has been modified in");
+         System.out.println("\tan unallowed way. Please restore the changes or completely");
+         System.out.println("\treturn it to a blank state and try again.");
+         System.out.println("\n\tClosing program now...");
+         System.exit(1);
+      }
 
       return personData;
-   }
-
-   public static void main(String[] args) {//REMOVE WHEN DONE TESTING
-      ArrayList<Person> people = getPeople();
-
-      for (Person prsn : people) {
-         System.out.println(prsn.getName());
-         System.out.println(prsn.getGender());
-         System.out.println(prsn.getCollege());
-         ArrayList<Attribute> responses = prsn.getResponses();
-
-         for (Attribute response : responses) {
-            System.out.println(response.getAttributeName() + ", " + response.getValue() + ", " + response.getImportance());
-         }
-      }
    }
 }

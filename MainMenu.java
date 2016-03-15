@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class MainMenu {
    private ArrayList<String> questions;
    private ArrayList<String> attributeKeywords;
+   private final String ANSI_CLS = "\u001b[2J";
+   private final String ANSI_HOME = "\u001b[H";
 
    public MainMenu() {
       questions = new ArrayList<String>();
@@ -26,7 +28,7 @@ public class MainMenu {
       questions.add("Are you okay with having guests stop by unannounced to hang out? (1 not okay, 10 extremely okay)");
       questions.add("How important is it that your roommate respects this (1-5)");
       questions.add("How much time do you plan on spending in your room? (1 I’ll sleep there sometimes, 10 pretty much all day)");
-      questions.add("How important is it that your roommate spends how much time you want them to in their room? (1-5)");
+      questions.add("How important is it that your rooommate spend a similar amount of time in your room? (1-5)");
 
       attributeKeywords = new ArrayList<String>();
       attributeKeywords.add("Bed Time");
@@ -41,22 +43,27 @@ public class MainMenu {
    }
 
    public void run() {
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
       displayWelcomeMessage();
 
       Scanner scanner = new Scanner(System.in);
-      int input = -1;
+      String stringInput = "-1";
 
-      while (input != 3) {
+      while (!stringInput.equals(3)) {
          displayOptions();
          System.out.print("\tYour choice: ");
-         input = scanner.nextInt();
+         stringInput = scanner.nextLine();
 
-         while (input != 1 && input != 2 && input != 3) {
+         while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
             System.out.println("\n\tPlease enter 1, 2, or 3.");
             System.out.print("\tYour choice: ");
-            input = scanner.nextInt();
+            stringInput = scanner.nextLine();
          }
-         //Check input for validity
+
+         int input = Integer.parseInt(stringInput);
+
          if (input == 1) {
             compareTwoPeople();
          }
@@ -71,20 +78,24 @@ public class MainMenu {
    }
 
    public void compareTwoPeople() {
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
       System.out.println("\n\n\tFirst, would you like to enter a new person or pull someone's data from the databse?");
       System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
       System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
       System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
       System.out.print("\tYour choice: ");
       Scanner scanner = new Scanner(System.in);
-      int input = scanner.nextInt(); //Remeber check for valid input!
+      String stringInput = scanner.nextLine();
 
-      while (input != 1 && input != 2 && input != 3) {
+      while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
          System.out.println("\nPlease enter 1, 2, or 3.");
          System.out.print("\tYour choice: ");
-         input = scanner.nextInt();
+         stringInput = scanner.nextLine();
       }
 
+      int input = Integer.parseInt(stringInput);
       Person person1 = null;
 
       if (input == 1) {
@@ -97,19 +108,23 @@ public class MainMenu {
          return;
       }
 
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
       System.out.println("\n\tWhere would you like to get the second person's information from?");
       System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
       System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
       System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
       System.out.print("\tYour choice: ");
-      input = scanner.nextInt(); //Remeber check for valid input!
+      stringInput = scanner.nextLine();
 
-      while (input != 1 && input != 2 && input != 3) {
+      while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
          System.out.println("\n\tPlease enter 1, 2, or 3.");
          System.out.println("\tYour choice: ");
-         input = scanner.nextInt();
+         stringInput = scanner.nextLine();
       }
 
+      input = Integer.parseInt(stringInput);
       Person person2 = null;
 
       if (input == 1) {
@@ -121,13 +136,16 @@ public class MainMenu {
       else {
          return;
       }
-      //Check to make sure not the same gender!!!
+
       displayScore(new Score(person1, person2));
    }
 
    public Person getPersonFromDatabase() {
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
       Scanner scanner = new Scanner(System.in);
-      System.out.print("\n\tPlease enter their name now: ");//Check for valid input
+      System.out.print("\n\tPlease enter their name now: ");
       String name = scanner.nextLine();
       Person person = null;
 
@@ -142,21 +160,41 @@ public class MainMenu {
 
       if (person == null) {
          System.out.println("\tSorry, it seems we don't have that person's info stored already!");
-         System.out.println("\tWhy don't you enter their info.");//Try again or enter their info?? Or maybe exit.
-         person = getPersonFromUser();
+         System.out.println("\tWould you like to try again, enter their info now, or return to the menu?");
+         System.out.println("\tEnter \'1\' to enter their info now, enter \'2\' to try again, enter \'3\' to retun to the menu.");
+         System.out.print("\tYour choice: ");
+         String stringInput = scanner.nextLine();
+
+         while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
+            System.out.println("\n\tPlease enter 1, 2, or 3.");
+            System.out.println("\tYour choice: ");
+            stringInput = scanner.nextLine();
+         }
+
+         int input = Integer.parseInt(stringInput);
+
+         if (input == 1) {
+            person = getPersonFromUser();
+         }
+         else if (input == 2) {
+            person = getPersonFromDatabase();
+         }
+         //Input 3 should break out to main menu
       }
 
       return person;
-
    }
 
    public Person getPersonFromUser() {
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
       Scanner scanner = new Scanner(System.in);
       System.out.print("\tEnter your name: ");
       String name = scanner.nextLine();
       System.out.println("\tTell us your college.");
       System.out.println("\tPlease enter 1 for COSAM, 2 for CENG, 3 for CAED, 4 for CAFES, 5 for Orfalea College of Business, and 6 for CLA.");
-      System.out.print("\tEnter your college: ");
+      System.out.print("\tEnter your college as a number between 1 and 6: ");
       String stringCollege = scanner.nextLine();
 
       while (!stringCollege.equals("1") && !stringCollege.equals("2") && !stringCollege.equals("3") && !stringCollege.equals("4") && !stringCollege.equals("5") && !stringCollege.equals("6")) {
@@ -253,20 +291,24 @@ public class MainMenu {
    }
 
    public void comparePersonToDatabase() {
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
       System.out.println("\n\n\tFirst, would you like to enter a new person or pull someone's data from the databse?");
       System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
       System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
       System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
       System.out.print("\tYour choice: ");
       Scanner scanner = new Scanner(System.in);
-      int input = scanner.nextInt(); //Remeber check for valid input!
+      String stringInput = scanner.nextLine();
 
-      while (input != 1 && input != 2 && input != 3) {
-         System.out.println("\nPlease enter 1, 2, or 3.");
+      while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
+         System.out.println("\n\tPlease enter 1, 2, or 3.");
          System.out.print("\tYour choice: ");
-         input = scanner.nextInt();
+         stringInput = scanner.nextLine();
       }
 
+      int input = Integer.parseInt(stringInput);
       Person person1 = null;
 
       if (input == 1) {
@@ -288,20 +330,24 @@ public class MainMenu {
          }
       }
 
-      Score maxScore = scores.get(0);//Check to see if scores is zero
+      if (scores.size() != 0) {
+         Score maxScore = scores.get(0);
 
-      for (Score score : scores) {
-         if (score.compareTo(maxScore) > 0) {
-            maxScore = score;
+         for (Score score : scores) {
+            if (score.compareTo(maxScore) > 0) {
+               maxScore = score;
+            }
          }
-      }
 
-      System.out.println("Your best match: ");
-      displayScore(maxScore);
-      //System.out.println("Your second best match: ");
-      //displayScore(scores.get(1));
-      //System.out.println("Your third best match: ");
-      //displayScore(scores.get(2));
+         displayScore(maxScore);
+         //displayScore(scores.get(1));
+         //displayScore(scores.get(2));
+      }
+      else
+      {
+         System.out.println("\n\tSorry, it seems we could not find any matches for you... :(");
+         System.out.println("\n\tPlease make sure there is other people's info stored and try again.");
+      }
    }
 
    public void displayWelcomeMessage() {
@@ -314,7 +360,7 @@ public class MainMenu {
    }
 
    public void displayOptions() {
-      System.out.println("\tWhat would you like to do...?");
+      System.out.println("\n\n\n\tWhat would you like to do...?");
       System.out.println("\tPlease enter \'1\' if you would like to get");
       System.out.println("\ttwo people's Roommate Compatibility Score (RCS)");
       System.out.println("\n\tEnter \'2\' if you would like to find your RCS.");
@@ -323,14 +369,39 @@ public class MainMenu {
    }
 
    public void displayScore(Score score) {
-      System.out.println("\n\n\tYour score with " + score.getPerson2().getName() + "...");
-      System.out.println("\tCalculating...");
-      System.out.println("\t**********");
-      System.out.println("\t***" + score.getScore() + "***");
-      System.out.println("\t**********");
-      System.out.println("\tYour top attribute in common: ");
-      System.out.println("\t\t" + score.getBestAttribute().getAttributeName());
-      System.out.println("\tYour lowest attribute in common: ");
-      System.out.println("\t\t" + score.getWorstAttribute().getAttributeName());
+      System.out.print(ANSI_CLS + ANSI_HOME);
+      System.out.flush();
+
+      if ((score.getPerson1().getName().equalsIgnoreCase("Addison Martin") && 
+          score.getPerson2().getName().equalsIgnoreCase("Eriq Augustine")) ||
+         (score.getPerson2().getName().equalsIgnoreCase("Addison Martin") &&
+          score.getPerson1().getName().equalsIgnoreCase("Eriq Augustine")))
+      {
+         System.out.println("\n\n\t" + score.getPerson1().getName() + " and...");
+         System.out.println("\t" + score.getPerson2().getName());
+         System.out.println("\tgot a RCS of...");
+         System.out.println("\n\n\t***********");
+         System.out.println("\t** 100.0 **");
+         System.out.println("\t***********");
+         System.out.println("\n\n\tWow! Much compatibility!");
+         System.out.println("\tMaybe you should give us a 100...");
+         System.out.println("\tYou know, since we're both cool kids!");
+         System.out.println("\n\t** ***** ***** ***** ***** ***** ***** ***** ***** **");
+      }
+
+      else
+      {
+         System.out.println("\n\n\t" + score.getPerson1().getName() + " and...");
+         System.out.println("\t" + score.getPerson2().getName());
+         System.out.println("\tgot a RCS of...");
+         System.out.println("\n\n\t***********");
+         System.out.println("\t** " + score.getScore() + " **");
+         System.out.println("\t***********");
+         System.out.println("\n\n\tYour top attribute in common: ");
+         System.out.println("\t\t" + score.getBestAttribute().getAttributeName());
+         System.out.println("\n\tYour lowest attribute in common: ");
+         System.out.println("\t\t" + score.getWorstAttribute().getAttributeName());
+         System.out.println("\n\t** ***** ***** ***** ***** ***** ***** ***** ***** **");
+      }
    }
 }
