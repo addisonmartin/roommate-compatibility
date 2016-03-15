@@ -1,4 +1,5 @@
-/** This database class provides the framework for storing Person data to a text file, instead of having it initialized every time the code is run.
+/** This database class provides the framework for storing Person data to a text file,
+* instead of having it initialized every time the code is run.
 * It also provides the framework to add Persons data to the existing text file.
 *
 * @author Natalie Keelan and Addison Martin
@@ -20,7 +21,8 @@ public class Database {
    private static final String ANSI_HOME = "\u001b[H";
 
    /**
-   * Returns an ArrayList of Person objects representing all of the Person data currently stored in the database.
+   * Returns an ArrayList of Person objects representing all
+   * of the Person data currently stored in the database.
    *
    * @return An ArayLIst of Person objects
    */
@@ -55,7 +57,8 @@ public class Database {
                String attributeName = personData[i];
                int attributeValue = Integer.parseInt(personData[i + 1]);
                int attributeImportance = Integer.parseInt(personData[i + 2]);
-               Attribute attribute = new Attribute(attributeName, attributeValue, attributeImportance);
+               Attribute attribute = new Attribute(
+                     attributeName, attributeValue, attributeImportance);
                person.saveResponse(attribute);
             }
 
@@ -117,7 +120,8 @@ public class Database {
             } catch (IOException e) {
                System.out.print(ANSI_CLS + ANSI_HOME);
                System.out.flush();
-               System.out.println("\tIt seems the text document storing people has been modified in");
+               System.out.println("\tIt seems the text document"
+                  + " storing people has been modified in");
                System.out.println("\tan unallowed way. Please restore the changes or completely");
                System.out.println("\treturn it to a blank state and try again.");
                System.out.println("\n\tClosing program now...");

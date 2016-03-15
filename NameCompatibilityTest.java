@@ -1,4 +1,5 @@
-/** The compatibility test that calculates how compatible two people are based on the letters of their name.
+/** The compatibility test that calculates how compatible
+* two people are based on the letters of their name.
 *
 * @author Natalie Keelan and Addison Martin
 * @version Program 7

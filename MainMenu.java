@@ -1,4 +1,5 @@
-/** Provides the implementation of a main menu in order to compare people, add people, or whatever else the user decides to do.
+/** Provides the implementation of a main menu in order to compare people,
+* add people, or whatever else the user decides to do.
 *
 * @@author Natalie Keelan and Addison Martin
 * @version Program 7
@@ -20,24 +21,36 @@ public class MainMenu {
    */
    public MainMenu() {
       questions = new ArrayList<String>();
-      questions.add("When do you go to sleep on an average day? Scale of 1-10 (1 being at or before 10:00 or before, 5 being at 12:00, 10 being after 2:00 am)");
+      questions.add("When do you go to sleep on an average day? Scale of 1-10"
+         + "(1 being at or before 10:00 or before, 5 being at 12:00, 10 being after 2:00 am)");
       questions.add("How important is it that you sleep at similar times as your roommate (1-5)");
-      questions.add("How often do you drink? (1 being never, 10 being heavily and 4 or more nights a week)");
+      questions.add("How often do you drink? (1 being never,"
+         + " 10 being heavily and 4 or more nights a week)");
       questions.add("How important is it that your roommate is okay with this? (1-5)");
-      questions.add("How often do you smoke weed or do other drugs? (1 being never, 10 being daily)");
+      questions.add("How often do you smoke weed or do other drugs?"
+         + " (1 being never, 10 being daily)");
       questions.add("How important is it that your roommate is okay with it? (1-5)");
       questions.add("How clean are you? (1 extremely messy, 10 extremely clean)");
       questions.add("How important is it that your roommate is similar? (1-5)");
-      questions.add("How much do you study on an average day? (1 being less than 30 mins, 5 being 2 hours, 10 being 6 or more hours)");
-      questions.add("How important is it that your roommate is respectful of your study time? (1-5)");
-      questions.add("How okay are you with sharing your things? (1 not okay, 10 share everything)");
-      questions.add("How important is it that your roommate has the same sharing policy as you? (1-5)");
-      questions.add("How often you plan on having overnight guests over? (1 being never, 10 being almost nightly)");
-      questions.add("How important is it that your roommate is okay with how often you have guests? (1-5)");
-      questions.add("Are you okay with having guests stop by unannounced to hang out? (1 not okay, 10 extremely okay)");
+      questions.add("How much do you study on an average day?"
+         + " (1 being less than 30 mins, 5 being 2 hours, 10 being 6 or more hours)");
+      questions.add("How important is it that your roommate is"
+         + " respectful of your study time? (1-5)");
+      questions.add("How okay are you with sharing your things?"
+         + " (1 not okay, 10 share everything)");
+      questions.add("How important is it that your roommate has the same "
+         + "sharing policy as you? (1-5)");
+      questions.add("How often you plan on having overnight guests over? "
+         + "(1 being never, 10 being almost nightly)");
+      questions.add("How important is it that your roommate is okay with "
+         + "how often you have guests? (1-5)");
+      questions.add("Are you okay with having guests stop by unannounced to "
+         + "hang out? (1 not okay, 10 extremely okay)");
       questions.add("How important is it that your roommate respects this (1-5)");
-      questions.add("How much time do you plan on spending in your room? (1 I’ll sleep there sometimes, 10 pretty much all day)");
-      questions.add("How important is it that your rooommate spend a similar amount of time in your room? (1-5)");
+      questions.add("How much time do you plan on spending in your room? "
+         + "(1 I’ll sleep there sometimes, 10 pretty much all day)");
+      questions.add("How important is it that your rooommate spend a similar "
+         + "amount of time in your room? (1-5)");
 
       attributeKeywords = new ArrayList<String>();
       attributeKeywords.add("Bed Time");
@@ -52,7 +65,8 @@ public class MainMenu {
    }
 
    /**
-   * Allows the program to be run until the user wants to quit. Laumches other methods as the user wants.
+   * Allows the program to be run until the user wants to quit.
+   * Laumches other methods as the user wants.
    */
    public void run() {
       System.out.print(ANSI_CLS + ANSI_HOME);
@@ -68,7 +82,7 @@ public class MainMenu {
          System.out.print("\tYour choice: ");
          stringInput = scanner.nextLine();
 
-         while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")) {
+         while (!stringInput.equals("1") && !stringInput.equals("2") && !stringInput.equals("3")){
             System.out.println("\n\tPlease enter 1, 2, or 3.");
             System.out.print("\tYour choice: ");
             stringInput = scanner.nextLine();
@@ -93,10 +107,13 @@ public class MainMenu {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
-      System.out.println("\n\n\tFirst, would you like to enter a new person or pull someone's data from the databse?");
+      System.out.println("\n\n\tFirst, would you like to enter a new person"
+         + " or pull someone's data from the databse?");
       System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
-      System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
-      System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
+      System.out.println("\tEnter \'2\' if you would like to pull someone's"
+         + " infomation from the database.");
+      System.out.println("\tEnter \'3\' if you would like to"
+         + " exit and return to the menu.");
       System.out.print("\tYour choice: ");
       Scanner scanner = new Scanner(System.in);
       String stringInput = scanner.nextLine();
@@ -125,7 +142,8 @@ public class MainMenu {
 
       System.out.println("\n\tWhere would you like to get the second person's information from?");
       System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
-      System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
+      System.out.println("\tEnter \'2\' if you would like to pull someone's infomation"
+         + " from the database.");
       System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
       System.out.print("\tYour choice: ");
       stringInput = scanner.nextLine();
@@ -204,11 +222,14 @@ public class MainMenu {
       System.out.print("\tEnter your name: ");
       String name = scanner.nextLine();
       System.out.println("\tTell us your college.");
-      System.out.println("\tPlease enter 1 for COSAM, 2 for CENG, 3 for CAED, 4 for CAFES, 5 for Orfalea College of Business, and 6 for CLA.");
+      System.out.println("\tPlease enter 1 for COSAM, 2 for CENG, 3 for CAED,"
+         + " 4 for CAFES, 5 for Orfalea College of Business, and 6 for CLA.");
       System.out.print("\tEnter your college as a number between 1 and 6: ");
       String stringCollege = scanner.nextLine();
 
-      while (!stringCollege.equals("1") && !stringCollege.equals("2") && !stringCollege.equals("3") && !stringCollege.equals("4") && !stringCollege.equals("5") && !stringCollege.equals("6")) {
+      while (!stringCollege.equals("1") && !stringCollege.equals("2") &&
+            !stringCollege.equals("3") && !stringCollege.equals("4") &&
+            !stringCollege.equals("5") && !stringCollege.equals("6")) {
          System.out.println("\tPlease enter a valid number between 1 and 6.");
          System.out.print("\tEnter your college: ");
          stringCollege = scanner.nextLine();
@@ -253,13 +274,16 @@ public class MainMenu {
 
       System.out.println("\n\n\tPlease answer the following questions.");
       System.out.println("\tYou will be asked one question about yourself on a scale of 1 - 10,");
-      System.out.println("\tand another question about how important that is to you on a scale of 1 - 5.");
-      System.out.println("\tWith 1 being the least important, and 10 or 5 being the most important.");
+      System.out.println("\tand another question about how important that"
+         + " is to you on a scale of 1 - 5.");
+      System.out.println("\tWith 1 being the least important, and 10 or 5"
+         + " being the most important.");
       System.out.println("\tPlease answer honestly. Lets begin.\n");
 
       int attributeKeywordIndex = 0;
       for (int i = 0; i < questions.size(); i += 2) {
-         person.saveResponse(askAboutAttribute(questions.get(i), questions.get(i + 1), attributeKeywords.get(attributeKeywordIndex)));
+         person.saveResponse(askAboutAttribute(questions.get(i), questions.get(i + 1),
+         attributeKeywords.get(attributeKeywordIndex)));
          attributeKeywordIndex++;
       }
 
@@ -306,9 +330,11 @@ public class MainMenu {
       System.out.print(ANSI_CLS + ANSI_HOME);
       System.out.flush();
 
-      System.out.println("\n\n\tFirst, would you like to enter a new person or pull someone's data from the databse?");
+      System.out.println("\n\n\tFirst, would you like to enter a new person or"
+         + " pull someone's data from the databse?");
       System.out.println("\n\tEnter \'1\' if you would like to enter a new person's infomation,");
-      System.out.println("\tEnter \'2\' if you would like to pull someone's infomation from the database.");
+      System.out.println("\tEnter \'2\' if you would like to pull someone's"
+         + " infomation from the database.");
       System.out.println("\tEnter \'3\' if you would like to exit and return to the menu.");
       System.out.print("\tYour choice: ");
       Scanner scanner = new Scanner(System.in);
@@ -384,7 +410,8 @@ public class MainMenu {
             System.out.print(ANSI_CLS + ANSI_HOME);
             System.out.flush();
             System.out.println("\n\tSorry, it seems we could not find any matches for you... :(");
-            System.out.println("\n\tPlease make sure there is other people's info stored and try again.");
+            System.out.println("\n\tPlease make sure there is other people's info"
+               + " stored and try again.");
 
          }
       }
@@ -392,7 +419,8 @@ public class MainMenu {
          System.out.print(ANSI_CLS + ANSI_HOME);
          System.out.flush();
          System.out.println("\n\tSorry, it seems we could not find any matches for you... :(");
-         System.out.println("\n\tPlease make sure there is other people's info stored and try again.");
+         System.out.println("\n\tPlease make sure there is other people's info"
+            + " stored and try again.");
       }
    }
 
@@ -415,7 +443,7 @@ public class MainMenu {
    }
 
    private void displayScore(Score score) {
-      if ((score.getPerson1().getName().equalsIgnoreCase("Addison Martin") && 
+      if ((score.getPerson1().getName().equalsIgnoreCase("Addison Martin") &&
           score.getPerson2().getName().equalsIgnoreCase("Eriq Augustine")) ||
          (score.getPerson2().getName().equalsIgnoreCase("Addison Martin") &&
           score.getPerson1().getName().equalsIgnoreCase("Eriq Augustine")))
