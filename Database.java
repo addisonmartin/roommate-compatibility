@@ -75,15 +75,15 @@ public class Database {
          return null;
       }
 
-      //people = Database.checkForDuplicates(people);
+      people = Database.checkForDuplicates(people);
       return people;
    }
 
    private static ArrayList<Person> checkForDuplicates(ArrayList<Person> people) {
       for (int i = 0; i < people.size(); i++) {
-         for (int j = i; j < people.size(); j++) {
-            if (people.get(i).equals(people.get(j))) {
-               people.remove(j);
+         for (int j = 0; j < people.size(); j++) {
+            if (people.get(i).equals(people.get(j)) && i != j) {
+               people.remove(i);
             }
          }
       }
